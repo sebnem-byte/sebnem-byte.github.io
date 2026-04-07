@@ -14,7 +14,7 @@
             background-color: #ffffff; 
             color: #374151;
         }
-        h1, h2, h3 { 
+        h1, h2, h3, h4 { 
             font-family: 'Google Sans', sans-serif; 
         }
         .paper-card {
@@ -47,7 +47,7 @@
     <nav class="max-w-4xl mx-auto px-6 py-10 flex justify-between items-center">
         <h2 class="text-xl font-bold tracking-tighter text-gray-900">SEBNEM<span class="text-blue-600">.IO</span></h2>
         <div class="space-x-8 text-sm">
-            <a href="#research" class="nav-link text-gray-600 hover:text-blue-600">Research</a>
+            <a href="#projects" class="nav-link text-gray-600 hover:text-blue-600">Academic Projects</a>
             <a href="#publications" class="nav-link text-gray-600 hover:text-blue-600">Publications</a>
             <a href="#hardware" class="nav-link text-gray-600 hover:text-blue-600">Hardware</a>
         </div>
@@ -68,8 +68,8 @@
                 </p>
                 
                 <div class="flex justify-center md:justify-start gap-6">
-                    <a href="https://github.com/sebnem-byte" class="text-gray-400 hover:text-gray-900 transition text-2xl"><i class="fab fa-github"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-gray-900 transition text-2xl"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/sebnem-byte" target="_blank" class="text-gray-400 hover:text-gray-900 transition text-2xl"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank" class="text-gray-400 hover:text-gray-900 transition text-2xl"><i class="fab fa-linkedin"></i></a>
                     <a href="mailto:contact@yourdomain.com" class="text-gray-400 hover:text-gray-900 transition text-2xl"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
@@ -78,56 +78,65 @@
 
     <main class="max-w-4xl mx-auto px-6 space-y-20">
 
-        <section id="publications">
-            <h2 class="text-2xl font-bold text-gray-900 mb-8 border-b pb-2">Selected Publications</h2>
-            <div class="paper-card p-8 rounded-2xl">
-                <div class="flex flex-col md:flex-row gap-6">
-                    <div class="flex-1">
-                        <span class="text-blue-600 font-bold text-xs uppercase tracking-widest">ICRA 2026</span>
-                        <h3 class="text-2xl font-bold text-gray-900 mt-1 mb-3">Edge-uSLAM: Event-based Edge-driven SLAM</h3>
-                        <p class="text-gray-600 text-sm mb-6 leading-relaxed">
-                            Integrating event cameras with edge computing to achieve sub-millisecond motion tracking and robust mapping in high-dynamic-range environments.
-                        </p>
-                        <div class="flex flex-wrap gap-3">
-                            <a href="https://sebnem-byte.github.io/edged-uslam.github.io/" class="bg-gray-900 text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-blue-600 transition">Project Page</a>
-                            <a href="#" class="border border-gray-300 text-gray-700 px-5 py-2 rounded-full text-xs font-bold hover:bg-gray-50 transition">Paper (PDF)</a>
-                            <a href="#" class="border border-gray-300 text-gray-700 px-5 py-2 rounded-full text-xs font-bold hover:bg-gray-50 transition">Code</a>
-                        </div>
+        <section id="projects">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8 border-b pb-2">Academic Projects & Thesis</h2>
+            <div class="grid gap-6">
+                <div class="paper-card p-6 rounded-2xl">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-gray-900">Master Thesis: Backend Optimization for Event-based SLAM</h3>
+                        <span class="text-xs font-bold bg-blue-100 text-blue-700 px-3 py-1 rounded-full uppercase">Thesis</span>
                     </div>
+                    <p class="text-sm text-gray-600 mb-4 italic">University of Paderborn - RAT Group</p>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                        Improving accuracy and efficiency of event-based SLAM systems through factor graph optimization and real-time state estimation.
+                    </p>
+                    <a href="https://en.ei.uni-paderborn.de/fileadmin-eim/elektrotechnik/fg/rat/Files_Gruppe/theses_and_master_project_topics/Master_Thesis/Master_Thesis____Backend_optimization.pdf" target="_blank" class="text-xs font-bold text-blue-600 hover:underline"><i class="fas fa-file-pdf mr-1"></i> View Topic Description</a>
+                </div>
+
+                <div class="paper-card p-6 rounded-2xl">
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-bold text-gray-900">Project Course: Visual SLAM for Drones</h3>
+                        <span class="text-xs font-bold bg-green-100 text-green-700 px-3 py-1 rounded-full uppercase">Project</span>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-4 italic">University of Paderborn - RAT Group</p>
+                    <p class="text-sm text-gray-600 leading-relaxed mb-4">
+                        Implementation of Visual SLAM algorithms on autonomous drones using PX4/Ardupilot stacks for robust flight navigation.
+                    </p>
+                    <a href="https://en.ei.uni-paderborn.de/fileadmin-eim/elektrotechnik/fg/rat/Files_Gruppe/theses_and_master_project_topics/Master_Projects/Project_Course__VisualSLAM_for_Drones.pdf" target="_blank" class="text-xs font-bold text-blue-600 hover:underline"><i class="fas fa-file-pdf mr-1"></i> View Topic Description</a>
                 </div>
             </div>
         </section>
 
-        <section id="research">
-            <h2 class="text-2xl font-bold text-gray-900 mb-8 border-b pb-2">Research Areas</h2>
-            <div class="grid md:grid-cols-2 gap-10">
-                <div class="space-y-3">
-                    <h4 class="text-lg font-bold text-blue-600">Computer Vision & CNNs</h4>
-                    <p class="text-sm text-gray-600">Working with CNN-based encoder-decoder architectures for depth estimation and feature extraction on neuromorphic data.</p>
-                </div>
-                <div class="space-y-3">
-                    <h4 class="text-lg font-bold text-blue-600">Drone Navigation</h4>
-                    <p class="text-sm text-gray-600">Real-time implementation of SLAM on PX4 and ArduPilot stacks for autonomous high-speed flight.</p>
+        <section id="publications">
+            <h2 class="text-2xl font-bold text-gray-900 mb-8 border-b pb-2">Selected Publications</h2>
+            <div class="paper-card p-8 rounded-2xl border-l-4 border-blue-600">
+                <span class="text-blue-600 font-bold text-xs uppercase tracking-widest">ICRA 2026</span>
+                <h3 class="text-2xl font-bold text-gray-900 mt-1 mb-3">Edge-uSLAM: Event-based Edge-driven SLAM</h3>
+                <p class="text-gray-600 text-sm mb-6 leading-relaxed">
+                    Integrating event cameras with edge computing to achieve sub-millisecond motion tracking and robust mapping.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="https://sebnem-byte.github.io/edged-uslam.github.io/" class="bg-gray-900 text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-blue-600 transition">Project Page</a>
                 </div>
             </div>
         </section>
 
         <section id="hardware" class="pb-20">
-            <h2 class="text-2xl font-bold text-gray-900 mb-8 border-b pb-2">Hardware Expertise</h2>
-            <p class="text-sm text-gray-600 mb-8">Specialized in designing <strong>hand-held devices</strong> for synchronized multi-modal data collection.</p>
+            <h2 class="text-2xl font-bold text-gray-900 mb-8 border-b pb-2">Hardware & Sensor Fusion</h2>
+            <p class="text-sm text-gray-600 mb-8">Specialized in designing <strong>hand-held devices</strong> for multi-modal data collection.</p>
             
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100 italic">
-                    <strong class="text-gray-900 not-italic uppercase text-xs block mb-1">Event Systems:</strong> Davis 346, Prophesee EVK4
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                    <strong class="text-gray-900 uppercase text-xs block mb-1">Event Cameras:</strong> Davis 346, Prophesee EVK4
                 </div>
-                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100 italic">
-                    <strong class="text-gray-900 not-italic uppercase text-xs block mb-1">Optical/Depth:</strong> Intel RealSense D435i, D455, LiDAR
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                    <strong class="text-gray-900 uppercase text-xs block mb-1">RGB-D & LiDAR:</strong> Intel D435i, D455, LiDAR
                 </div>
-                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100 italic">
-                    <strong class="text-gray-900 not-italic uppercase text-xs block mb-1">Navigation IMU:</strong> VectorNAV, SBG Ellipse
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                    <strong class="text-gray-900 uppercase text-xs block mb-1">IMU:</strong> VectorNAV, SBG Ellipse
                 </div>
-                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100 italic">
-                    <strong class="text-gray-900 not-italic uppercase text-xs block mb-1">Autopilot:</strong> PX4 & ArduPilot Real-time Control
+                <div class="p-4 bg-gray-50 rounded-lg border border-gray-100">
+                    <strong class="text-gray-900 uppercase text-xs block mb-1">Autopilot:</strong> PX4 & ArduPilot Real-time Control
                 </div>
             </div>
         </section>
