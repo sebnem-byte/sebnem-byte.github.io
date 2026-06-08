@@ -182,14 +182,36 @@
             <div class="grid gap-8">
                 
                 <!-- BOX 1 -->
+                <!-- BOX 1: EGS-SLAM -->
                 <div class="paper-card p-6 rounded-2xl border-l-4 border-purple-500">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
-                        <h3 class="text-lg font-bold text-gray-900">1. EGS-SLAM: RGB-D Gaussian Splatting SLAM</h3>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
+                        <h3 class="text-xl font-bold text-gray-900">1. EGS-SLAM: RGB-D Gaussian Splatting SLAM with Events</h3>
                         <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide whitespace-nowrap">Hybrid</span>
                     </div>
-                    <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                        [Buraya makalenin özetini yazabilirsin. Örn: Bu makale RGB-D sensör verisiyle olay kameralarını harmanlayarak 3D Gaussian Splatting alanında ciddi bir yenilik getiriyor. Event frameler üzerinden...]
-                    </p>
+                    
+                    <!-- Paper Architecture Image -->
+                    <div class="mb-5 flex justify-center">
+                        <img src="literature/EGS-SLAM.jpg" alt="EGS-SLAM Pipeline" class="w-full max-w-2xl rounded-lg shadow-sm border border-gray-200">
+                    </div>
+
+                    <div class="space-y-3">
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong class="text-gray-900">Novelty:</strong> The first E-RGB-D framework integrating event streams, RGB, and depth into 3D Gaussian Splatting SLAM. It explicitly models continuous camera trajectories during exposure and introduces a learnable Camera Response Function (CRF) to align HDR events with LDR images. A novel "no-event loss" is also proposed to suppress ringing artifacts.
+                        </p>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong class="text-gray-900">Performance & Real-Time Applicability:</strong> Achieves a massive reduction in tracking error (ATE drops by ~42% on synthetic and ~47% on real data) and boosts reconstruction PSNR from 23.32dB to 27.62dB. While it operates online, it runs at 0.55 FPS, making it significantly slower than real-time requirements.
+                        </p>
+                        <div class="bg-gray-50 p-3 rounded-lg border border-gray-100 grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                            <div>
+                                <h4 class="text-xs font-bold text-green-700 uppercase mb-1"><i class="fas fa-plus-circle mr-1"></i> Advantages</h4>
+                                <p class="text-xs text-gray-600">Highly robust to severe motion blur; produces incredibly sharp, photorealistic 3D maps where classical methods fail.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-red-700 uppercase mb-1"><i class="fas fa-minus-circle mr-1"></i> Disadvantages</h4>
+                                <p class="text-xs text-gray-600">Computationally heavy due to multiple rendering cycles (0.55 FPS). Strictly requires depth sensors (RGB-D) and lacks a monocular setup.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- BOX 2 -->
