@@ -270,18 +270,60 @@
 
                 <!-- BOX 5 -->
                 <div class="paper-card p-6 rounded-2xl border-l-4 border-purple-500">
-                    <h3 class="text-lg font-bold text-gray-900 mb-3">5. ED-SLAM: Event-Depth Gaussian Splatting</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                        [Voxel grid ve derinlik haritalarını kullanarak 3D sahne rekonstrüksiyonunda event verisinin sınırlarını zorluyor...]
-                    </p>
-                </div>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
+                        <h3 class="text-xl font-bold text-gray-900">5. ED-SLAM: Event-Depth Gaussian Splatting SLAM</h3>
+                        <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide whitespace-nowrap">Hybrid</span>
+                    </div>
 
-                <!-- BOX 6 -->
+                    <div class="space-y-3">
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong class="text-gray-900">Novelty:</strong> Most existing event-based Gaussian Splatting methods assume known camera poses or fail during extended operations. This paper introduces a novel <strong>patch-based event-depth tracking algorithm</strong> that seamlessly integrates into the 3DGS mapping pipeline, eliminating the need for ground-truth camera priors and ensuring stable tracking over long durations.
+                        </p>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong class="text-gray-900">Performance & Applicability:</strong> Validated on both synthetic and real-world datasets, the authors report high-accuracy pose estimation and high-fidelity 3D reconstructions. By successfully handling long event streams without losing track, it proves highly applicable for continuous autonomous robotic navigation tasks.
+                        </p>
+                        <div class="bg-gray-50 p-3 rounded-lg border border-gray-100 grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                            <div>
+                                <h4 class="text-xs font-bold text-green-700 uppercase mb-1"><i class="fas fa-plus-circle mr-1"></i> Advantages</h4>
+                                <p class="text-xs text-gray-600">A true SLAM system that solves the pose-prior dependency in event-GS networks. The patch-based tracking approach significantly improves robustness over long, continuous event streams where other implicit methods usually drift or crash.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-red-700 uppercase mb-1"><i class="fas fa-minus-circle mr-1"></i> Disadvantages</h4>
+                                <p class="text-xs text-gray-600">Similar to EGS-SLAM, it relies heavily on dense depth data, preventing its use in pure monocular event setups. Tracking directly on event-depth patches within a 3DGS loop might still carry a substantial computational burden.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- BOX 6: Deep Visual Odometry for Stereo Event Cameras -->
                 <div class="paper-card p-6 rounded-2xl border-l-4 border-green-500">
-                    <h3 class="text-lg font-bold text-gray-900 mb-3">6. Deep Visual Odometry for Stereo Event Cameras</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                        [Stereo event kameralarından gelen verileri Event Voxel Grid'lere dönüştürerek doğrudan sinir ağlarıyla odometri tahmini yapan çalışma...]
-                    </p>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
+                        <h3 class="text-xl font-bold text-gray-900">6. Deep Visual Odometry for Stereo Event Cameras (Stereo-DEVO)</h3>
+                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide whitespace-nowrap">Learning-based</span>
+                    </div>
+
+                    <!-- Architecture Diagram -->
+                    <div class="mb-5 flex justify-center">
+                        <img src="literature/SDEVO.png" alt="Stereo-DEVO Architecture" class="w-full max-w-3xl rounded-lg shadow-sm border border-gray-200">
+                    </div>
+
+                    <div class="space-y-3">
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong class="text-gray-900">Novelty:</strong> This work introduces Stereo-DEVO, effectively eliminating the monocular scale ambiguity of the original DEVO network. It proposes a novel, highly efficient <strong>static-stereo association strategy</strong> for sparse depth estimation on event voxel grids. This is then tightly integrated into a Bundle Adjustment (BA) scheme alongside recurrent optical flow predictions.
+                        </p>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong class="text-gray-900">Performance & Real-Time Applicability:</strong> Refactored in ROS, it achieves real-time execution on VGA resolution data (~10 Hz on a desktop RTX 3090, ~5 Hz on a laptop). It achieves state-of-the-art results over ESVO2 and DEIO, particularly succeeding in a 2.5km nighttime driving sequence with a mere 4.52m error where classical methods completely fail.
+                        </p>
+                        <div class="bg-gray-50 p-3 rounded-lg border border-gray-100 grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                            <div>
+                                <h4 class="text-xs font-bold text-green-700 uppercase mb-1"><i class="fas fa-plus-circle mr-1"></i> Advantages</h4>
+                                <p class="text-xs text-gray-600">Unprecedented robustness in large-scale, nighttime HDR environments and under aggressive motion (e.g., drones flying at 3.9m/s). The new depth extraction module is incredibly lightweight (~0.46ms).</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-red-700 uppercase mb-1"><i class="fas fa-minus-circle mr-1"></i> Disadvantages</h4>
+                                <p class="text-xs text-gray-600">Heavy reliance on CUDA operations severely throttles its performance on low-power embedded edge devices (e.g., drops to ~1 Hz on Jetson Orin NX). Far-range scene reconstruction remains impossible due to event sparsity.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- BOX 7 -->
