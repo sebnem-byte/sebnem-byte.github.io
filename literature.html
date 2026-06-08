@@ -222,24 +222,63 @@
 
                 <!-- BOX 2 -->
                 <div class="paper-card p-6 rounded-2xl border-l-4 border-green-500 bg-yellow-50/30">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
-                        <h3 class="text-lg font-bold text-gray-900">2. Event-based Motion & Appearance Fusion <i class="fas fa-star text-yellow-500 text-sm ml-1"></i></h3>
-                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide whitespace-nowrap">Learning-based</span>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
+                        <h3 class="text-xl font-bold text-gray-900">2. Event-based Motion & Appearance Fusion for 6D Object Pose Tracking <i class="fas fa-star text-yellow-500 text-sm ml-1" title="Highlighted Paper"></i></h3>
+                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide whitespace-nowrap">Learning-Free / Hybrid</span>
                     </div>
-                    <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                        [Buraya özetini yazabilirsin. 6D nesne takibi için hem hareket hem de görünüm özelliklerini birleştiren çok güçlü bir IIT çalışması...]
-                    </p>
-                </div>
 
+                    <div class="mb-5 flex justify-center">
+                        <img src="literature/Tracking.jpg" alt="6D Tracking Architecture" class="w-full max-w-3xl rounded-lg shadow-sm border border-gray-200">
+                    </div>
+
+                    <div class="space-y-3">
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong class="text-gray-900">Novelty:</strong> Shifting focus from camera localization to object tracking, this work proposes a learning-free method for 6D object pose tracking. It uniquely fuses motion and appearance by first propagating the object's pose using 6D velocity derived from event-based optical flow, and then correcting this pose using a template-based local appearance matching module.
+                        </p>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong class="text-gray-900">Performance & Applicability:</strong> By avoiding heavy deep neural networks, this method is highly applicable for low-latency, real-time robotic manipulation tasks in industrial or home settings. It performs on par with current state-of-the-art methods but demonstrates superior performance specifically when tracking fast-moving objects, capitalizing on the high temporal resolution of event cameras.
+                        </p>
+                        <div class="bg-white p-3 rounded-lg border border-green-100 grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                            <div>
+                                <h4 class="text-xs font-bold text-green-700 uppercase mb-1"><i class="fas fa-plus-circle mr-1"></i> Advantages</h4>
+                                <p class="text-xs text-gray-600">Learning-free architecture ensures high update rates without requiring massive training datasets or heavy GPU inference. The dual approach of continuous optical flow for speed and template matching for drift correction ensures robust tracking under dynamic conditions.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-red-700 uppercase mb-1"><i class="fas fa-minus-circle mr-1"></i> Disadvantages</h4>
+                                <p class="text-xs text-gray-600">The reliance on a template-based pose correction module implies a dependency on known 3D models or templates of the tracked objects, potentially limiting its use on novel or highly deformable items.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- BOX 3 -->
                 <div class="paper-card p-6 rounded-2xl border-l-4 border-orange-500 bg-yellow-50/30">
-                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 gap-2">
-                        <h3 class="text-lg font-bold text-gray-900">3. Event-lab: Standardized Evaluation <i class="fas fa-star text-yellow-500 text-sm ml-1"></i></h3>
-                        <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide whitespace-nowrap">Standard</span>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
+                        <h3 class="text-xl font-bold text-gray-900">3. Event-LAB: Standardized Evaluation of Neuromorphic Localization <i class="fas fa-star text-yellow-500 text-sm ml-1" title="Highlighted Paper"></i></h3>
+                        <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide whitespace-nowrap">Standard / Benchmark</span>
                     </div>
-                    <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                        [Literatürdeki neuromorphic lokalizasyon yöntemleri için uzun zamandır beklenen standartlaştırılmış benchmark (kıyaslama) framework'ü...]
-                    </p>
+
+                    <div class="mb-5 flex justify-center">
+                        <img src="literature/eventlab.png" alt="Event-LAB Framework" class="w-full max-w-3xl rounded-lg shadow-sm border border-gray-200">
+                    </div>
+
+                    <div class="space-y-3">
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong class="text-gray-900">Novelty:</strong> As event-based localization research rapidly expands, comparing methods has become a nightmare of conflicting dependencies and fragmented data formats. Event-LAB proposes a unified framework that solves this "dependency hell." Utilizing the Pixi package manager, it enables single-command installation and execution of various SLAM and Visual Place Recognition (VPR) methodologies across multiple datasets using standardized interfaces.
+                        </p>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong class="text-gray-900">Performance & Applicability:</strong> Rather than introducing new state-estimation math, its performance is measured by its utility to researchers. It successfully standardizes evaluation pipelines on major datasets (e.g., VECtor, Brisbane-Event-VPR) and integrates tools like <code>evo</code> to systematically visualize and analyze trajectory performance. It is a highly applicable, indispensable tool for ensuring reproducible research.
+                        </p>
+                        <div class="bg-white p-3 rounded-lg border border-orange-100 grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                            <div>
+                                <h4 class="text-xs font-bold text-green-700 uppercase mb-1"><i class="fas fa-plus-circle mr-1"></i> Advantages</h4>
+                                <p class="text-xs text-gray-600">A massive time-saver for the neuromorphic community. By streamlining package dependencies and dataset formats, it guarantees fair, reliable, and reproducible comparisons between competing algorithms.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-red-700 uppercase mb-1"><i class="fas fa-minus-circle mr-1"></i> Disadvantages</h4>
+                                <p class="text-xs text-gray-600">It is purely an evaluation suite, not a novel mapping or tracking algorithm itself. It relies entirely on the capabilities of the underlying SLAM methods integrated into its pipeline.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- BOX 4: MotionGS-SLAM -->
