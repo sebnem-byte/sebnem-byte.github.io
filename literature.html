@@ -164,7 +164,7 @@
                         <tr class="bg-blue-50 hover:bg-blue-100 transition-colors">
                             <td class="px-6 py-4 text-center font-bold text-blue-600">10</td>
                             <td class="px-6 py-4 font-semibold">
-                                <a href="https://sebnem-byte.github.io/edged-uslam.github.io/" class="text-blue-800 hover:underline" target="_blank">Edged-VSLAM</a>
+                                <a href="https://sebnem-byte.github.io/edged-uslam.github.io/" class="text-blue-800 hover:underline" target="_blank">Edged-USLAM</a>
                                 <span class="ml-2 text-[9px] bg-blue-600 text-white px-2 py-0.5 rounded uppercase font-bold tracking-wider">My Work</span>
                             </td>
                             <td class="px-6 py-4 text-center"><span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Standard</span></td>
@@ -328,34 +328,125 @@
 
                 <!-- BOX 7 -->
                 <div class="paper-card p-6 rounded-2xl border-l-4 border-orange-500">
-                    <h3 class="text-lg font-bold text-gray-900 mb-3">7. FAST-LIEO: Lidar-Inertial-Event-Visual Odometry</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                        [Dört farklı modaliteyi (LiDAR, IMU, Event, Kamera) gerçek zamanlı ve çok yüksek hızda optimize edebilen sensör füzyonu mimarisi...]
-                    </p>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
+                        <h3 class="text-xl font-bold text-gray-900">7. FAST-LIEO: Fast and Real-Time Lidar-Inertial-Event-Visual Odometry</h3>
+                        <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide whitespace-nowrap">Standard / Filter-Based</span>
+                    </div>
+
+                    <div class="mb-5 flex justify-center">
+                        <img src="literature/FAST-LIEO.png" alt="FAST-LIEO Pipeline" class="w-full max-w-3xl rounded-lg shadow-sm border border-gray-200">
+                    </div>
+
+                    <div class="space-y-3">
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong class="text-gray-900">Novelty:</strong> FAST-LIEO is an ultra-robust sensor fusion framework that tightly couples LiDAR, IMU, event cameras, and standard RGB cameras using an Iterated Kalman Filter (ESIKF). Bypassing expensive feature extraction, it proposes a novel Event-Inertial Odometry (EIO) subsystem that builds a semi-dense event map leveraging LiDAR geometries and tracks the state by directly aligning negative Time Surface (TS) maps. 
+                        </p>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong class="text-gray-900">Performance & Applicability:</strong> Designed from the ground up for strict real-time execution. It dominates classical methods (like FAST-LIO2 or R3LIVE) under extreme edge cases, completely preventing initialization failures at >20 m/s tunnel entries and easily surviving total LiDAR degeneration (e.g., facing featureless walls closely) by falling back on high-dynamic-range event measurements.
+                        </p>
+                        <div class="bg-gray-50 p-3 rounded-lg border border-gray-100 grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                            <div>
+                                <h4 class="text-xs font-bold text-green-700 uppercase mb-1"><i class="fas fa-plus-circle mr-1"></i> Advantages</h4>
+                                <p class="text-xs text-gray-600">Exceptional resilience. Capable of surviving scenarios where other sensors go blind (HDR conditions, aggressive motions, or LiDAR structure-loss). Direct alignment without feature matching makes it extremely CPU efficient.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-red-700 uppercase mb-1"><i class="fas fa-minus-circle mr-1"></i> Disadvantages</h4>
+                                <p class="text-xs text-gray-600">Simultaneous LiDAR degeneration and texture-less environments will still break the system. Using high-resolution event cameras at a 60Hz TS rate creates computing bottlenecks, sacrificing its "fast" nature.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- BOX 8 -->
                 <div class="paper-card p-6 rounded-2xl border-l-4 border-green-500">
-                    <h3 class="text-lg font-bold text-gray-900 mb-3">8. LEAR: Learning Edge-Aware Representations</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                        [Event ve Lidar lokalizasyonu için kenar duyarlı (edge-aware) özellik çıkarımını Graph yapılarıyla öğrenen metot...]
-                    </p>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
+                        <h3 class="text-xl font-bold text-gray-900">8. LEAR: Learning Edge-Aware Representations for Event-Lidar Localization</h3>
+                        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide whitespace-nowrap">Learning-based</span>
+                    </div>
+
+                    <div class="mb-5 flex justify-center">
+                        <img src="literature/LEAR.jpg" alt="LEAR Architecture" class="w-full max-w-3xl rounded-lg shadow-sm border border-gray-200">
+                    </div>
+
+                    <div class="space-y-3">
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong class="text-gray-900">Novelty:</strong> Aligning asynchronous sparse events with dense LiDAR maps is highly ill-posed. LEAR solves this modality gap through a dual-task learning framework that jointly estimates edge structures and dense event-depth flow fields. It uses a cross-modal fusion mechanism to inject modality-invariant geometric edge cues directly into the motion representations, enforcing mutual consistency.
+                        </p>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong class="text-gray-900">Performance & Applicability:</strong> The network's inference time is roughly 45 ms per sample (~22 FPS), making it highly applicable for near real-time deployment. Utilizing Perspective-n-Point (PnP) solvers for 6-DoF pose recovery, it significantly outperforms prior state-of-the-art methods across challenging datasets like M3ED, DSEC, and VECtor.
+                        </p>
+                        <div class="bg-gray-50 p-3 rounded-lg border border-gray-100 grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                            <div>
+                                <h4 class="text-xs font-bold text-green-700 uppercase mb-1"><i class="fas fa-plus-circle mr-1"></i> Advantages</h4>
+                                <p class="text-xs text-gray-600">Exceptional cross-modal alignment. By treating edge detection not as a post-hoc aid but as a core coupled task, it achieves extreme robustness in visually degraded, GPS-denied, or high-speed environments where standard vision fails.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-red-700 uppercase mb-1"><i class="fas fa-minus-circle mr-1"></i> Disadvantages</h4>
+                                <p class="text-xs text-gray-600">It is purely a localization framework, meaning it inherently relies on the presence of a pre-built, highly accurate dense LiDAR map of the environment. It does not perform simultaneous mapping (not a full SLAM).</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- BOX 9 -->
                 <div class="paper-card p-6 rounded-2xl border-l-4 border-orange-500">
-                    <h3 class="text-lg font-bold text-gray-900 mb-3">9. Continuous Gaussian Process Pre-Optimization</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                        [Asenkron event akışını kesintisiz ve sürekli (continuous-time) Gaussian Process matematiksel modelleriyle optimize eden VIO yaklaşımı...]
-                    </p>
-                </div>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
+                        <h3 class="text-xl font-bold text-gray-900">9. Continuous Gaussian Process Pre-Optimization for Async Event-Inertial Odometry</h3>
+                        <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide whitespace-nowrap">Standard / Mathematical</span>
+                    </div>
 
+                    <div class="mb-5 flex justify-center">
+                        <img src="literature/GaussOpt.png" alt="Gaussian Process Optimization Architecture" class="w-full max-w-3xl rounded-lg shadow-sm border border-gray-200">
+                    </div>
+
+                    <div class="space-y-3">
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong class="text-gray-900">Novelty:</strong> Traditional VIO systems force asynchronous event streams into discrete-time frames (like 30Hz images) to match standard IMU preintegration methods. This paper eliminates that bottleneck by introducing a continuous-time pre-optimization framework (GPO) based on Gaussian Process regression. It models IMU states continuously, allowing perfectly aligned, zero-loss fusion with event data at the exact microsecond any event is asynchronously triggered.
+                        </p>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong class="text-gray-900">Performance & Applicability:</strong> Designed for tightly-coupled fusion in high-speed, HDR conditions. Using closed-form solutions for Gaussian Process regression, it maintains a manageable computational load suitable for real-world robotics. It demonstrates smoother ego-motion estimation and lower trajectory errors compared to standard discrete-time IMU preintegration methods (like ESVIO).
+                        </p>
+                        <div class="bg-gray-50 p-3 rounded-lg border border-gray-100 grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                            <div>
+                                <h4 class="text-xs font-bold text-green-700 uppercase mb-1"><i class="fas fa-plus-circle mr-1"></i> Advantages</h4>
+                                <p class="text-xs text-gray-600">A theoretically beautiful approach to sensor fusion. By treating time as a continuous variable, it fully unleashes the raw, asynchronous power of event cameras without artificial framing delays or synchronization errors.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-red-700 uppercase mb-1"><i class="fas fa-minus-circle mr-1"></i> Disadvantages</h4>
+                                <p class="text-xs text-gray-600">Continuous-time optimization matrices are significantly more complex to formulate and debug than standard discrete filters. Additionally, this is an Odometry system lacking backend Global Mapping or Loop Closure mechanisms.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <!-- BOX 10 -->
-                <div class="paper-card p-6 rounded-2xl border-l-4 border-blue-600 bg-blue-50/40">
-                    <h3 class="text-lg font-bold text-gray-900 mb-3">10. Edged-VSLAM <span class="ml-2 text-[10px] bg-blue-600 text-white px-2 py-0.5 rounded uppercase font-bold">My Work</span></h3>
-                    <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                        [Kendi projen için buraya detaylı bir açıklama girebilirsin. Edge computing ve event tabanlı kenar görüntüleriyle HDR ortamlarda sağladığın sub-millisecond performansı burada vurgulayabilirsin...]
-                    </p>
+<div class="paper-card p-6 rounded-2xl border-l-4 border-blue-600 bg-blue-50/40">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
+                        <h3 class="text-xl font-bold text-gray-900">10. Edged-VSLAM <span class="ml-2 text-[10px] bg-blue-600 text-white px-2 py-0.5 rounded uppercase font-bold tracking-wider">My Work</span></h3>
+                        <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide whitespace-nowrap">Hybrid / Edge-Driven</span>
+                    </div>
+
+                    <div class="mb-5 flex justify-center">
+                        <img src="literature/edgeduslam.jpg" alt="Edged-USLAM Architecture" class="w-full max-w-3xl rounded-lg shadow-sm border border-gray-200">
+                    </div>
+
+                    <div class="space-y-3">
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong class="text-gray-900">Novelty:</strong> Edged-USLAM introduces a novel framework that fundamentally integrates asynchronous event cameras with edge computing capabilities. It models raw event streams into robust <strong>event-based edge images</strong>, driving the entire localization and mapping pipeline strictly through these resilient geometric edge constraints rather than full photometric intensity.
+                        </p>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong class="text-gray-900">Performance & Applicability:</strong> Designed specifically for high-speed autonomy. By pushing processing closer to the sensor (edge computing), it achieves <strong>sub-millisecond motion tracking</strong>. It is highly applicable to autonomous drones and agile ground vehicles operating in extreme high-dynamic-range (HDR) environments.
+                        </p>
+                        <div class="bg-white p-3 rounded-lg border border-blue-100 grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                            <div>
+                                <h4 class="text-xs font-bold text-green-700 uppercase mb-1"><i class="fas fa-plus-circle mr-1"></i> Advantages</h4>
+                                <p class="text-xs text-gray-600">Ultra-low latency tracking. The edge-driven approach makes the system virtually immune to standard visual degradations like motion blur, extreme under-exposure, or sudden glare.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-red-700 uppercase mb-1"><i class="fas fa-minus-circle mr-1"></i> Disadvantages</h4>
+                                <p class="text-xs text-gray-600">Being a standard edge/geometry-based system, it produces sparser structural maps compared to the dense, photorealistic reconstructions of newer 3DGS or learning-based NeRF approaches.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
