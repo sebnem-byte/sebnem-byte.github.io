@@ -40,15 +40,25 @@
             transition: width 0.3s;
         }
         .nav-link:hover::after { width: 100%; }
+        
+        /* Table Custom Scrollbar for Mobile */
+        .table-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+        .table-scroll::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 3px;
+        }
     </style>
 </head>
 <body class="antialiased">
 
     <nav class="max-w-4xl mx-auto px-6 py-10 flex justify-between items-center text-uppercase">
         <h2 class="text-xl font-bold tracking-tighter text-gray-900 uppercase">SEBNEM<span class="text-blue-600">.IO</span></h2>
-        <div class="space-x-8 text-sm font-semibold">
+        <div class="space-x-8 text-sm font-semibold hidden md:block">
             <a href="#projects" class="nav-link text-gray-600 hover:text-blue-600">Teaching</a>
             <a href="#publications" class="nav-link text-gray-600 hover:text-blue-600">Publications</a>
+            <a href="#icra-trends" class="nav-link text-gray-600 hover:text-blue-600">ICRA 2026</a>
             <a href="#research" class="nav-link text-gray-600 hover:text-blue-600">Research</a>
             <a href="#hardware" class="nav-link text-gray-600 hover:text-blue-600">Hardware</a>
         </div>
@@ -183,6 +193,107 @@
                 <div class="flex flex-wrap gap-3">
                     <a href="https://sebnem-byte.github.io/edged-uslam.github.io/" class="bg-gray-900 text-white px-5 py-2 rounded-full text-xs font-bold hover:bg-blue-600 transition">Project Page</a>
                 </div>
+            </div>
+        </section>
+
+        <!-- NEW SECTION: ICRA 2026 TRENDS TABLE -->
+        <section id="icra-trends">
+            <div class="flex justify-between items-end mb-8 border-b pb-2">
+                <h2 class="text-2xl font-bold text-gray-900">Event-based SLAM Algorithms in ICRA 2026</h2>
+                <span class="text-[10px] font-bold bg-gray-100 text-gray-600 px-2 py-1 rounded-full uppercase tracking-widest mb-1">Literature Review</span>
+            </div>
+            <p class="text-sm text-gray-600 mb-6 leading-relaxed">
+                A comprehensive technical breakdown of the latest event-based localization, mapping, and pose tracking methods presented at ICRA 2026. This compilation highlights the shift towards hybrid Gaussian Splatting and learning-based representations.
+            </p>
+            
+            <div class="paper-card rounded-2xl overflow-hidden table-scroll overflow-x-auto">
+                <table class="w-full text-left border-collapse min-w-[800px]">
+                    <thead class="bg-gray-100 border-b border-gray-200 text-xs uppercase tracking-wider text-gray-500 font-bold">
+                        <tr>
+                            <th class="px-6 py-4 text-center w-12">#</th>
+                            <th class="px-6 py-4">Paper Title / Method</th>
+                            <th class="px-6 py-4 text-center w-36">Category</th>
+                            <th class="px-6 py-4">Event Presentation</th>
+                            <th class="px-6 py-4 text-center w-24">RT</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-gray-700 text-sm divide-y divide-gray-100">
+                        <tr class="hover:bg-white transition-colors">
+                            <td class="px-6 py-4 text-center font-semibold text-gray-400">1</td>
+                            <td class="px-6 py-4">RGB-D Gaussian Splatting SLAM with Events (EGS-SLAM)</td>
+                            <td class="px-6 py-4 text-center"><span class="bg-purple-100 text-purple-700 px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Hybrid</span></td>
+                            <td class="px-6 py-4">Event Frames / Voxel Grid</td>
+                            <td class="px-6 py-4 text-center text-blue-500"><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr class="hover:bg-white transition-colors">
+                            <td class="px-6 py-4 text-center font-semibold text-gray-400">2</td>
+                            <td class="px-6 py-4">Event-based Motion & Appearance Fusion for 6D Object Pose Tracking (iit) <i class="fas fa-star text-yellow-400 ml-1 text-[10px]" title="Highlighted"></i></td>
+                            <td class="px-6 py-4 text-center"><span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Learning</span></td>
+                            <td class="px-6 py-4">Time Surfaces / Event Stream</td>
+                            <td class="px-6 py-4 text-center text-blue-500"><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr class="hover:bg-white transition-colors">
+                            <td class="px-6 py-4 text-center font-semibold text-gray-400">3</td>
+                            <td class="px-6 py-4">Towards Standardized Evaluation of Neuromorphic Localization Methods (Event-lab) <i class="fas fa-star text-yellow-400 ml-1 text-[10px]" title="Highlighted"></i></td>
+                            <td class="px-6 py-4 text-center"><span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Standard</span></td>
+                            <td class="px-6 py-4">Multiple Presentations</td>
+                            <td class="px-6 py-4 text-center text-gray-400 text-xs font-semibold uppercase">Eval</td>
+                        </tr>
+                        <tr class="hover:bg-white transition-colors">
+                            <td class="px-6 py-4 text-center font-semibold text-gray-400">4</td>
+                            <td class="px-6 py-4">Event-modulated Gaussian Splatting for Motion-Blur Robust SLAM (MotionGS-SLAM)</td>
+                            <td class="px-6 py-4 text-center"><span class="bg-purple-100 text-purple-700 px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Hybrid</span></td>
+                            <td class="px-6 py-4">Event-modulated Radiance Fields</td>
+                            <td class="px-6 py-4 text-center text-blue-500"><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr class="hover:bg-white transition-colors">
+                            <td class="px-6 py-4 text-center font-semibold text-gray-400">5</td>
+                            <td class="px-6 py-4">Event-Depth Gaussian Splatting SLAM (ED-SLAM)</td>
+                            <td class="px-6 py-4 text-center"><span class="bg-purple-100 text-purple-700 px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Hybrid</span></td>
+                            <td class="px-6 py-4">Voxel Grid / Depth Maps</td>
+                            <td class="px-6 py-4 text-center text-blue-500"><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr class="hover:bg-white transition-colors">
+                            <td class="px-6 py-4 text-center font-semibold text-gray-400">6</td>
+                            <td class="px-6 py-4">Deep Visual Odometry for Stereo Event Cameras</td>
+                            <td class="px-6 py-4 text-center"><span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Learning</span></td>
+                            <td class="px-6 py-4">Event Voxel Grid</td>
+                            <td class="px-6 py-4 text-center text-blue-500"><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr class="hover:bg-white transition-colors">
+                            <td class="px-6 py-4 text-center font-semibold text-gray-400">7</td>
+                            <td class="px-6 py-4">Fast and Real-Time Lidar-Inertial-Event-Visual Odometry (FAST-LIEO)</td>
+                            <td class="px-6 py-4 text-center"><span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Standard</span></td>
+                            <td class="px-6 py-4">Time Surfaces / Edge Maps</td>
+                            <td class="px-6 py-4 text-center text-blue-500"><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr class="hover:bg-white transition-colors">
+                            <td class="px-6 py-4 text-center font-semibold text-gray-400">8</td>
+                            <td class="px-6 py-4">Learning Edge-Aware Representations for Event-Lidar Localization (LEAR)</td>
+                            <td class="px-6 py-4 text-center"><span class="bg-green-100 text-green-700 px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Learning</span></td>
+                            <td class="px-6 py-4">Graph / Edge-Aware Representation</td>
+                            <td class="px-6 py-4 text-center text-blue-500"><i class="fas fa-check"></i></td>
+                        </tr>
+                        <tr class="hover:bg-white transition-colors">
+                            <td class="px-6 py-4 text-center font-semibold text-gray-400">9</td>
+                            <td class="px-6 py-4">Continuous Gaussian Process Pre-Optimization for Async Event-Inertial Odometry</td>
+                            <td class="px-6 py-4 text-center"><span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Standard</span></td>
+                            <td class="px-6 py-4">Asynchronous Event Stream</td>
+                            <td class="px-6 py-4 text-center text-blue-500"><i class="fas fa-check"></i></td>
+                        </tr>
+                        <!-- Highlighted Author Work -->
+                        <tr class="bg-blue-50/50 hover:bg-blue-50 transition-colors">
+                            <td class="px-6 py-4 text-center font-bold text-blue-600">10</td>
+                            <td class="px-6 py-4 font-semibold">
+                                <a href="https://sebnem-byte.github.io/edged-uslam.github.io/" class="text-gray-900 hover:text-blue-600 transition-colors" target="_blank">Edged-VSLAM</a>
+                                <span class="ml-2 text-[9px] bg-blue-600 text-white px-2 py-0.5 rounded uppercase font-bold tracking-wider">Your Work</span>
+                            </td>
+                            <td class="px-6 py-4 text-center"><span class="bg-orange-100 text-orange-700 px-2 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide">Standard</span></td>
+                            <td class="px-6 py-4">Event-based Edge Images</td>
+                            <td class="px-6 py-4 text-center text-blue-600"><i class="fas fa-check"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
 
