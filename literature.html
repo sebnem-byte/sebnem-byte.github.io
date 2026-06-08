@@ -236,12 +236,36 @@
                     </p>
                 </div>
 
-                <!-- BOX 4 -->
+                <!-- BOX 4: MotionGS-SLAM -->
                 <div class="paper-card p-6 rounded-2xl border-l-4 border-purple-500">
-                    <h3 class="text-lg font-bold text-gray-900 mb-3">4. MotionGS-SLAM</h3>
-                    <p class="text-sm text-gray-600 leading-relaxed mb-4">
-                        [Motion-blur (hareket bulanıklığı) durumlarında event-modulated radiance field kullanarak Gaussian Splatting'i stabilize eden bir yaklaşım...]
-                    </p>
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 gap-2">
+                        <h3 class="text-xl font-bold text-gray-900">4. MotionGS-SLAM: Event-Modulated Gaussian Splatting</h3>
+                        <span class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wide whitespace-nowrap">Hybrid</span>
+                    </div>
+
+                    <div class="space-y-3">
+                        <!-- YAYINLANMADI BİLGİSİ -->
+                        <div class="bg-blue-50 text-blue-700 px-3 py-2 rounded text-xs font-semibold mb-3 border border-blue-100">
+                            <i class="fas fa-info-circle mr-1"></i> Note: The full paper is not yet published. This analysis is based entirely on the released abstract.
+                        </div>
+                        
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong class="text-gray-900">Novelty:</strong> Instead of treating motion blur as an inverse problem (trying to "deblur" degraded images), this work introduces a paradigm shift by modeling blur formation as a generative forward problem within the rendering pipeline. It utilizes a novel <strong>event-modulated Gaussian kernel</strong> with dual mechanics: <em>Spatial modulation</em> (stretching isotropic dots into motion-aligned elliptical strokes based on event cues) and <em>Temporal modulation</em> (adapting exposure sampling density using local velocity).
+                        </p>
+                        <p class="text-sm text-gray-700 leading-relaxed">
+                            <strong class="text-gray-900">Performance & Applicability:</strong> Authors claim significant improvements over SOTA in both trajectory accuracy and map quality under severe high-motion conditions. Since the full text is unreleased, exact FPS, hardware requirements, and real-time execution capabilities remain unknown.
+                        </p>
+                        <div class="bg-gray-50 p-3 rounded-lg border border-gray-100 grid grid-cols-1 sm:grid-cols-2 gap-4 mt-2">
+                            <div>
+                                <h4 class="text-xs font-bold text-green-700 uppercase mb-1"><i class="fas fa-plus-circle mr-1"></i> Advantages</h4>
+                                <p class="text-xs text-gray-600">A brilliant physics-based approach. Jointly optimizing camera trajectories and 3D scene geometry by physically mimicking blur directly inside the 3DGS rasterizer avoids the pitfalls of classical deblurring networks.</p>
+                            </div>
+                            <div>
+                                <h4 class="text-xs font-bold text-red-700 uppercase mb-1"><i class="fas fa-minus-circle mr-1"></i> Disadvantages</h4>
+                                <p class="text-xs text-gray-600">Computational overhead is a massive question mark. Dynamically modulating and anisotropically stretching Gaussians for every frame's exposure integral could be too resource-heavy for strict real-time robotic deployment.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- BOX 5 -->
